@@ -1,0 +1,33 @@
+<h2>Student Management</h2>
+
+<div class="form-section">
+  <h3>{{ editingId ? 'Edit Student' : 'Add Student' }}</h3>
+  <input [(ngModel)]="form.name"   placeholder="Name" />
+  <input [(ngModel)]="form.email"  placeholder="Email" />
+  <input [(ngModel)]="form.course" placeholder="Course" />
+  <button class="btn-success" (click)="submit()">{{ editingId ? 'Update' : 'Add' }}</button>
+  <button class="btn-warning" *ngIf="editingId" (click)="reset()">Cancel</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of students">
+      <td>{{ s.id }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.email }}</td>
+      <td>{{ s.course }}</td>
+      <td>
+        <button class="btn-primary" (click)="edit(s)">Edit</button>
+        <button class="btn-danger"  (click)="delete(s.id!)">Delete</button>
+      </td>
+    </tr>
+    <tr *ngIf="students.length === 0">
+      <td colspan="5" style="text-align:center">No students found.</td>
+    </tr>
+  </tbody>
+</table>
