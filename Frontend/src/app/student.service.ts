@@ -5,7 +5,7 @@ import { Student } from './student.model';
 
 @Injectable({ providedIn: 'root' })
 export class StudentService {
-  private url = 'http://3.110.155.2:8081/api/students';
+  private url = 'http://52.66.242.97:8080/students';
 
   constructor(private http: HttpClient) {}
 
